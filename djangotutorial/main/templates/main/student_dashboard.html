@@ -1,0 +1,20 @@
+<h2>Active Attendance Sessions</h2>
+<ul>
+    {% for session in active_sessions %}
+        <li>
+            {{ session.title }} (Professor: {{ session.created_by.username }})
+            
+            {% if session.id in checked_in_session_ids %}
+                <span style="color: green;">✓ Checked In</span>
+            {% else %}
+                <form method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="session_id" value="{{ session.id }}">
+                    <button type="submit">Check In</button>
+                </form>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No active attendance sessions right now.</li>
+    {% endfor %}
+</ul>
