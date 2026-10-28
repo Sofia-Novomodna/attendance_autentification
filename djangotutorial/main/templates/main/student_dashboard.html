@@ -1,4 +1,13 @@
-<h2>Active Attendance Sessions</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@4.0.0" integrity="sha384-BvJpBiO8Kh31EqtJe5DRIeWrHWnCGkwytKs9NKFi86Hhw96dEqdEMzZDeK9iEGTc" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h2>Active Attendance Sessions</h2>
 <ul>
     {% for session in active_sessions %}
         <li>
@@ -18,3 +27,28 @@
         <li>No active attendance sessions right now.</li>
     {% endfor %}
 </ul>
+<button hx-delete="/account" hx-confirm="Are you sure?">
+    Delete My Account
+</button>
+<button hx-put="/account" hx-confirm="Are you sure?">
+    Update My Account
+</button>
+
+<div id="message" hx-swap-oob="true">
+    Form submitted successfully!
+</div>
+
+<form id="my-form">
+    <!-- Updated form content -->
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
